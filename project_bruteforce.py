@@ -104,18 +104,23 @@ def try_smtp_login(host, port, username, password):
     return False
 
 # HTTP Login (Form Based) 
-def try_http_login(url, username, password):
+def try_http_login(url, username, password, user_field, pass_field, fail_flag):
     try:
         data = {
             user_field: username,
             pass_field: password
         }
         r = requests.post(url, data=data, timeout=timeout_seconds)
-        if failure_indicator.lower() not in r.text.lower():
-            print(f"[HTTP LOGIN SUCCESS🔥] {username}:{password}")
-            return True
-        else:
+        
+        # Check if failure indicator is in the response
+        if fail_flag.lower() in r.text.lower():
             print(f"[HTTP FAIL❌] {username}:{password}")
+        else:
+            print(f"[HTTP LOGIN SUCCESS🔥] {username}:{password}")
+            # Save result to file
+            with open("success_logins.txt", "a") as f:
+                f.write(f"HTTP | {username}:{password}\n")
+            return True
     except Exception as e:
         print(f"[HTTP ERROR⚠️] {e}")
     return False
