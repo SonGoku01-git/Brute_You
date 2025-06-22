@@ -25,7 +25,7 @@ time.sleep(1)
 try:
     pygame.init()
     pygame.mixer.init()
-    sound_path = os.path.join(os.path.dirname(__file__), "C:/Users/mayuk/Downloads/aisa-mat-karo.mp3")
+    sound_path = os.path.join(os.path.dirname(__file__), "aisa-mat-karo.mp3")
     pygame.mixer.music.load(sound_path)
     pygame.mixer.music.play()
 except:
