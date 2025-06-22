@@ -1,0 +1,13 @@
+# Optional banner
+print(r"""
+╔════════════════════════════════════════════════════╗
+║    🔥 MAYUKH BISWAS - BRUTE FORCE TOOL 🔥          ║
+║     超本能 | Ultra Instinct Mode: ACTIVATED 🧠      ║
+║    Protocols: SSH | FTP | HTTP | SMTP              ║
+╚════════════════════════════════════════════════════╝
+""")
+
+# 🔊 Play Goku growl sound
+playsound("goku.mp3")
+
+time.sleep(1)
