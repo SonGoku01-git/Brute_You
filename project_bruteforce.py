@@ -25,7 +25,7 @@ time.sleep(1)
 try:
     pygame.init()
     pygame.mixer.init()
-    pygame.mixer.music.load("goku.mp3")
+    pygame.mixer.music.load("aisa-mat-karo.mp3")
     pygame.mixer.music.play()
 
 
