@@ -23,7 +23,7 @@ time.sleep(1)
 # 🔊 Play Warning sound
 pygame.init()
 pygame.mixer.init()
-pygame.mixer.music.load("C:/Users/mayuk/Downloads/aisa-mat-karo.mp3")
+pygame.mixer.music.load("aisa-mat-karo.mp3")
 pygame.mixer.music.play()
 
 time.sleep(1)
