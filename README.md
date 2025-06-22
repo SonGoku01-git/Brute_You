@@ -26,6 +26,11 @@ You can:
 ---
 
 ## ⚙️ Setup Instructions
+cd Brute_You
+
+python/python3 project_bruteforce.py
+
+fill all parameters
 
 ### ✅ 1. Install Required Modules
 
@@ -33,5 +38,6 @@ Open CMD or PowerShell and run:
 
 ```bash
 pip install paramiko requests
+pip install pygame
 
 
