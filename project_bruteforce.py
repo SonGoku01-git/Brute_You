@@ -23,11 +23,11 @@ time.sleep(1)
 
 # Optional startup sound
 try:
-    pygame.init()
-    pygame.mixer.init()
-    sound_path = os.path.join(os.path.dirname(__file__), "aisa-mat-karo.mp3")
-    pygame.mixer.music.load(sound_path)
-    pygame.mixer.music.play()
+pygame.init()
+pygame.mixer.init()
+pygame.mixer.music.load("goku.mp3")
+pygame.mixer.music.play()
+
 except:
     print("[!] Warning: Sound file could not be played.")
 
