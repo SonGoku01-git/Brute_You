@@ -17,6 +17,7 @@ You can:
 - Provide the ip.
 - Provide a username and password list file.
 - Set a timeout after which the attack stops automatically.
+- You can also keep this option blank if you want to scan full file.
 - Easily select protocol and customize your input via command-line.
 
 
@@ -39,5 +40,6 @@ Open CMD or PowerShell and run:
 ```bash
 pip install paramiko requests
 pip install pygame
+pip install requests 
 
 
