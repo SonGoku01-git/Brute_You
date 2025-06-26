@@ -1,0 +1,130 @@
+🔐 Project Documentation: Brute Force Automation Tool
+Developer: Mayukh Biswas
+Project Name: Ultra Instinct Brute Force Tool
+Version: 1.0
+Date: June 2025
+
+📌 Project Overview
+This project is a multi-protocol brute-force automation tool developed in Python that allows ethical hackers, penetration testers, and security researchers to test the strength of credentials for various network services like SSH, FTP, HTTP (form-based), and SMTP.
+
+⚠ Disclaimer: This tool is intended for educational and authorized penetration testing purposes only. Unauthorized use of this tool is illegal and unethical.
+
+🧠 Key Features
+✅ Supports 4 major protocols: SSH, FTP, HTTP, SMTP
+
+✅ Default ports auto-selected based on protocol
+
+✅ Custom timeout or unlimited attack duration
+
+✅ Auto-stops when credentials are found
+
+✅ Custom wordlist input (user/pass files)
+
+✅ Plays optional startup sound using pygame
+
+✅ Simple terminal-based UI with emoji-based status feedback
+
+✅ Stores successful login in success_logins.txt (for HTTP)
+
+🛠️ Technologies Used
+Python 3.12
+
+paramiko for SSH
+
+ftplib for FTP
+
+smtplib for SMTP
+
+requests for HTTP POST login
+
+pygame for optional sound
+
+time, os modules for system operations
+
+📄 Input Requirements
+Target IP address
+
+Protocol type (ssh, ftp, http, smtp)
+
+Username file path
+
+Password file path
+
+Timeout in seconds (can be left blank to use full dictionary)
+
+For HTTP only:
+
+Login form URL
+
+Username and password field names
+
+Failure indicator keyword in the response
+
+📂 Output
+Displays live attempt status for each protocol.
+
+Stops when a valid credential is found or time ends.
+
+For HTTP, success credentials are logged in success_logins.txt.
+
+🚫 Error Handling & Improvements
+✔ UTF-8 decode errors are resolved by validating and cleaning wordlist input files.
+
+✔ Added HTTP fallback status code and keyword-based logic to reduce false positives.
+
+✔ Error handling for all login attempts (try-except).
+
+⏳ Timeout logic included to stop long-running processes.
+
+🧾 Added input validation for HTTP field names.
+
+🧩 Future Upgrades (Suggested)
+Auto-detect HTTP form fields (username, password) using BeautifulSoup.
+
+Add multi-threaded attacks for speed (carefully throttle to avoid lockouts).
+
+Include CAPTCHA or rate-limiting detection.
+
+GUI interface for usability.
+
+Protocol support expansion: RDP, Telnet, etc.
+
+📁 Folder Structure
+bash
+Copy
+Edit
+Brute_You/
+├── project_bruteforce.py
+├── users.txt
+├── passwords.txt
+├── success_logins.txt
+└── aisa-mat-karo.mp3  # Optional
+
+Example
+
+✅ SSH
+bash
+Copy
+Edit
+Target IP: 192.168.0.100  
+Protocol: ssh  
+Username file: users.txt  
+Password file: passwords.txt  
+Timeout: 60
+
+✅ HTTP
+bash
+Copy
+Edit
+Target IP: 192.168.0.105  
+Protocol: http  
+Login URL: http://example.com 
+Username field: user  
+Password field: pass  
+Failure text: invalid  
+
+✅ Final Notes
+This tool is a valuable asset for learning and practicing ethical hacking techniques related to password security. However, it must never be used on unauthorized systems. Always obtain permission and follow organizational rules and legal boundaries.
+
+
+  
